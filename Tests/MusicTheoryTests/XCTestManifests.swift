@@ -6,7 +6,7 @@ public func allTests() -> [XCTestCaseEntry] {
         testCase(IntegerUtilsTests.allTests),
         testCase(NoteTests.allTests),
         testCase(NoteLetterTests.allTests),
-        // testCase(DiatonicMajorScaleTests.allTests),
+        testCase(DiatonicMajorScaleTests.allTests),
         // testCase(DiatonicMinorScaleTests.allTests),
         testCase(BluesScaleTests.allTests)
     ]
