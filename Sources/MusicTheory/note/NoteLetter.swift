@@ -14,4 +14,8 @@ public enum NoteLetter: String, CaseIterable, CustomStringConvertible, Codable, 
     public static func of(_ s: String) -> NoteLetter? {
         NoteLetter(rawValue: s)
     }
+
+    public func advanced(by n: Int) -> NoteLetter {
+        Self.allCases[(Self.allCases.firstIndex(of: self)! + n).floorMod(Self.allCases.count)]
+    }
 }
