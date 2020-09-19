@@ -32,7 +32,7 @@ final class DiatonicMajorScaleTests: XCTestCase {
             Note(.c, .flat, 0), // TODO: Should this be denoted using octave 1?
             Note(.d, .flat, 1),
             Note(.e, .flat, 1),
-            Note(.f, .flat, 1)
+            Note(.f, 1)
         ])
     }
 }
