@@ -54,13 +54,14 @@ final class DiatonicScaleTests: XCTestCase {
         assertRelativeKeys(NoteClass(.g), NoteClass(.e))
         assertRelativeKeys(NoteClass(.d), NoteClass(.b))
         assertRelativeKeys(NoteClass(.e), NoteClass(.c, .sharp))
-        assertRelativeKeys(NoteClass(.b, .flat), NoteClass(.d, .flat))
+        assertRelativeKeys(NoteClass(.d, .flat), NoteClass(.b, .flat))
     }
 
     private func assertRelativeKeys(_ major: NoteClass, _ minor: NoteClass) {
         XCTAssertEqual(
             Set(DiatonicMajorScale(key: Note(noteClass: major, octave: 0)).notes.map(\.noteClass)),
-            Set(DiatonicMinorScale(key: Note(noteClass: minor, octave: 0)).notes.map(\.noteClass))
+            Set(DiatonicMinorScale(key: Note(noteClass: minor, octave: 0)).notes.map(\.noteClass)),
+            "\(major) major is not the relative key to \(minor) minor"
         )
     }
 }
