@@ -6,7 +6,7 @@ public struct NoteClass: Codable, Hashable {
     public var accidental: NoteAccidental?
 
     /// The semitone within a C major scale.
-    public var semitone: Int { letter.semitone }
+    public var semitone: Int { letter.semitone + (accidental?.semitones ?? 0) }
 
     public init(_ letter: NoteLetter, _ accidental: NoteAccidental? = nil) {
         self.letter = letter
