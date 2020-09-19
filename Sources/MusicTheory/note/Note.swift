@@ -15,7 +15,7 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
 
     public var description: String { "\(noteClass)\(octave)" }
 
-    private init(noteClass: NoteClass, octave: Int) {
+    public init(noteClass: NoteClass, octave: Int) {
         self.noteClass = noteClass
         self.octave = octave
     }
