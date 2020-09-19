@@ -21,4 +21,9 @@ public struct Note: Codable, Hashable {
     public init(_ letter: NoteLetter, _ accidental: NoteAccidental, _ octave: Int) {
         self.init(NoteClass(letter, accidental), octave)
     }
+
+    public init(numValue: Int) {
+        let count = NoteClass.twelveToneOctave.count
+        self.init(NoteClass(semitone: numValue.floorMod(count)), numValue.floorDiv(count))
+    }
 }

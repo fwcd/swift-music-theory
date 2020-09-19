@@ -34,4 +34,11 @@ public struct NoteClass: Codable, Hashable {
         self.letter = letter
         self.accidental = accidental
     }
+
+    public init(semitone: Int) {
+        let modSemitone = semitone.floorMod(Self.twelveToneOctave.count)
+        let enharmonic = Self.twelveToneOctave[modSemitone].first!
+
+        self.init(enharmonic.letter, enharmonic.accidental)
+    }
 }
