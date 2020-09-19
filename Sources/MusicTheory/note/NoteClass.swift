@@ -5,25 +5,30 @@ public struct NoteClass: Codable, Hashable {
     /// The twelve note classes with their (most common)
     /// enharmonic spellings.
     public static let twelveToneOctave: [[NoteClass]] = [
-        [Self(.c)],
+        [Self(.c), Self(.b, .sharp)],
         [Self(.c, .sharp), Self(.d, .flat)],
         [Self(.d)],
         [Self(.d, .sharp), Self(.e, .flat)],
-        [Self(.e)],
-        [Self(.f)],
+        [Self(.e), Self(.f, .flat)],
+        [Self(.f), Self(.e, .sharp)],
         [Self(.f, .sharp), Self(.g, .flat)],
         [Self(.g)],
         [Self(.g, .sharp), Self(.a, .flat)],
         [Self(.a)],
         [Self(.a, .sharp), Self(.b, .flat)],
-        [Self(.b)]
+        [Self(.b), Self(.c, .flat)]
     ]
 
     public var letter: NoteLetter
     public var accidental: NoteAccidental?
 
     /// The semitone within a C major scale.
-    public var semitone: Int { letter.semitone + (accidental?.semitones ?? 0) }
+    public var semitone: Int {
+        guard let base = Self.twelveToneOctave.firstIndex(where: { $0.contains(self) }) else {
+            fatalError("Invalid note class: \(self), twelve-tone octave should contain all note classes. This is a bug.")
+        }
+        return base + (accidental?.semitones ?? 0)
+    }
 
     public init(_ letter: NoteLetter, _ accidental: NoteAccidental? = nil) {
         self.letter = letter
