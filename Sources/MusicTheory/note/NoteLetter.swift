@@ -1,3 +1,5 @@
+/// A note letter, corresponding to the steps
+/// of a C major scale.
 public enum NoteLetter: String, Codable, Hashable {
     case c = "C"
     case d = "D"
