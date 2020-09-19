@@ -13,17 +13,26 @@ public struct Note: Codable, Hashable {
     /// A "global semitone" that identifies the note's pitch uniquely on the keyboard
     public var numValue: Int { (octave * NoteClass.twelveToneOctave.count) + noteClass.semitone }
 
-    public init(_ noteClass: NoteClass, _ octave: Int) {
+    private init(noteClass: NoteClass, octave: Int) {
         self.noteClass = noteClass
         self.octave = octave
     }
 
-    public init(_ letter: NoteLetter, _ accidental: NoteAccidental, _ octave: Int) {
-        self.init(NoteClass(letter, accidental), octave)
+    public init(_ letter: NoteLetter, _ accidental: NoteAccidental?, _ octave: Int) {
+        self.init(noteClass: NoteClass(letter, accidental), octave: octave)
+    }
+
+    public init(_ letter: NoteLetter, _ octave: Int) {
+        // Workaround since optional unlabeled arguments in the middle
+        // confuse Swift's overload resolution.
+        self.init(letter, nil, octave)
     }
 
     public init(numValue: Int) {
         let count = NoteClass.twelveToneOctave.count
-        self.init(NoteClass(semitone: numValue.floorMod(count)), numValue.floorDiv(count))
+        self.init(
+            noteClass: NoteClass(semitone: numValue.floorMod(count)),
+            octave: numValue.floorDiv(count)
+        )
     }
 }

@@ -24,10 +24,10 @@ public struct NoteClass: Codable, Hashable {
 
     /// The semitone within a C major scale.
     public var semitone: Int {
-        guard let base = Self.twelveToneOctave.firstIndex(where: { $0.contains(self) }) else {
+        guard let st = Self.twelveToneOctave.firstIndex(where: { $0.contains(self) }) else {
             fatalError("Invalid note class: \(self), twelve-tone octave should contain all note classes. This is a bug.")
         }
-        return base + (accidental?.semitones ?? 0)
+        return st
     }
 
     public init(_ letter: NoteLetter, _ accidental: NoteAccidental? = nil) {
