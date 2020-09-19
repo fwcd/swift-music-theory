@@ -5,7 +5,7 @@ public struct NoteClass: Codable, Hashable {
     public var letter: NoteLetter
     public var accidental: NoteAccidental?
 
-    public init(letter: NoteLetter, accidental: NoteAccidental? = nil) {
+    public init(_ letter: NoteLetter, _ accidental: NoteAccidental? = nil) {
         self.letter = letter
         self.accidental = accidental
     }

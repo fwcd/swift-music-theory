@@ -5,8 +5,15 @@ public struct Note: Codable, Hashable {
     public var noteClass: NoteClass
     public var octave: Int
 
-    public init(noteClass: NoteClass, octave: Int) {
+    public var letter: NoteLetter { noteClass.letter }
+    public var accidental: NoteAccidental? { noteClass.accidental }
+
+    public init(_ noteClass: NoteClass, _ octave: Int) {
         self.noteClass = noteClass
         self.octave = octave
+    }
+
+    public init(_ letter: NoteLetter, _ accidental: NoteAccidental, _ octave: Int) {
+        self.init(NoteClass(letter, accidental), octave)
     }
 }
