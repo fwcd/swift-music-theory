@@ -10,8 +10,8 @@ public struct Note: Codable, Hashable {
 
     /// The semitone within a C major scale
     public var semitone: Int { noteClass.semitone }
-    /// A "global semitone" that identifies a note's pitch uniquely
-    public var numValue: Int { octave *  }
+    /// A "global semitone" that identifies the note's pitch uniquely on the keyboard
+    public var numValue: Int { (octave * NoteClass.twelveToneOctave.count) + noteClass.semitone }
 
     public init(_ noteClass: NoteClass, _ octave: Int) {
         self.noteClass = noteClass
