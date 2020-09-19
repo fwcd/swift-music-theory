@@ -1,5 +1,5 @@
 /// Intervals on the diatonic scale.
-public struct Interval: Hashable {
+public struct DiatonicInterval: Hashable {
     public let degrees: Int
     public let semitones: Int
 

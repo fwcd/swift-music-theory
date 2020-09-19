@@ -40,8 +40,12 @@ public struct Note: Codable, Hashable {
         Note(numValue: numValue + n)
     }
 
-    public static func +(note: Note, interval: Interval) -> Note {
+    public static func +(note: Note, interval: DiatonicInterval) -> Note {
         let newLetter = note.letter.advanced(by: interval.degrees)
         return Note(numValue: note.numValue + interval.semitones, enharmonicPicker: { $0.first { $0.letter == newLetter } ?? $0.first! })
+    }
+
+    public static func +(note: Note, interval: ChromaticInterval) -> Note {
+        note.advanced(by: interval.semitones)
     }
 }

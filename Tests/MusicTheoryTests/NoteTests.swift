@@ -4,7 +4,8 @@ import XCTest
 final class NoteTests: XCTestCase {
     static var allTests = [
         ("testNote", testNote),
-        ("testNoteIntervals", testNoteIntervals)
+        ("testDiatonicIntervals", testDiatonicIntervals),
+        ("testChromaticIntervals", testChromaticIntervals)
     ]
     
     func testNote() {
@@ -15,9 +16,14 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(Note(.e, .sharp, 4).numValue, Note(.f, 4).numValue)
     }
 
-    func testNoteIntervals() {
+    func testDiatonicIntervals() {
         XCTAssertEqual(Note(.c, 0) + .octave, Note(.c, 1))
         XCTAssertEqual(Note(.c, 1) + .minorSecond, Note(.d, .flat, 1))
         XCTAssertEqual(Note(.c, 1) + .majorSecond, Note(.d, 1))
+    }
+
+    func testChromaticIntervals() {
+        XCTAssertEqual(Note(.c, 0) + .semitone, Note(.c, .sharp, 0))
+        XCTAssertEqual(Note(.c, 0) + .semitones(2), Note(.d, 0))
     }
 }
