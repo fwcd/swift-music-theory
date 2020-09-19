@@ -28,11 +28,15 @@ public struct Note: Codable, Hashable {
         self.init(letter, nil, octave)
     }
 
-    public init(numValue: Int) {
+    public init(numValue: Int, enharmonicPicker: ([NoteClass]) -> NoteClass = { $0.first! }) {
         let count = NoteClass.twelveToneOctave.count
         self.init(
-            noteClass: NoteClass(semitone: numValue.floorMod(count)),
+            noteClass: NoteClass(semitone: numValue.floorMod(count), enharmonicPicker: enharmonicPicker),
             octave: numValue.floorDiv(count)
         )
+    }
+
+    public func advanced(by n: Int) -> Note {
+        Note(numValue: numValue + n)
     }
 }

@@ -35,10 +35,10 @@ public struct NoteClass: Codable, Hashable {
         self.accidental = accidental
     }
 
-    public init(semitone: Int) {
+    public init(semitone: Int, enharmonicPicker: ([NoteClass]) -> NoteClass = { $0.first! }) {
         let modSemitone = semitone.floorMod(Self.twelveToneOctave.count)
         let equivalents = Self.twelveToneOctave[modSemitone]
-        let enharmonic = equivalents.first!
+        let enharmonic = enharmonicPicker(equivalents)
 
         self.init(enharmonic.letter, enharmonic.accidental)
     }
