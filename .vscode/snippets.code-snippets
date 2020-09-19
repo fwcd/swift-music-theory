@@ -1,0 +1,20 @@
+{
+	"Test case": {
+		"prefix": "testcase",
+		"scope": "swift",
+		"body": [
+			"import XCTest",
+			"@testable import $1",
+			"",
+			"final class $2Tests: XCTestCase {",
+			"\tstatic var allTests = [",
+			"\t\t(\"test$3\", test$3)",
+			"\t]",
+			"\t",
+			"\tfunc test$3() throws {",
+			"\t\t$0",
+			"\t}",
+			"}"
+		]
+	}
+}
