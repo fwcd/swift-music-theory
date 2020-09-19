@@ -1,6 +1,10 @@
 # Music Theory Library for Swift
 A minimal library for Western music theory in pure Swift, defining notes, scales, chords, intervals, progressions and more.
 
+
+[![Linux](https://github.com/fwcd/swift-music-theory/workflows/Linux/badge.svg)](https://github.com/fwcd/swift-music-theory/actions)
+[![macOS](https://github.com/fwcd/swift-music-theory/workflows/macOS/badge.svg)](https://github.com/fwcd/swift-music-theory/actions)
+
 Since no external dependencies are needed, it runs on Linux, macOS and any other platform supporting Swift 5.2+.
 
 ## Examples
