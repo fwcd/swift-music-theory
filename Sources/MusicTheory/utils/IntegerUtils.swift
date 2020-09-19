@@ -4,7 +4,7 @@ extension Int {
         if self >= 0 {
             return self / rhs
         } else {
-            return (self - rhs + 1) / rhs
+            return ((self - rhs) + 1) / rhs
         }
     }
 
