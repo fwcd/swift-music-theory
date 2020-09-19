@@ -26,4 +26,8 @@ public enum NoteLetter: Int, CaseIterable, CustomStringConvertible, Codable, Has
     public static func of(_ s: String) -> NoteLetter? {
         letterStrings.first { $0.value == s }.map(\.key)
     }
+
+    public static func of(semitone: Int) -> NoteLetter? {
+        NoteLetter(rawValue: semitone)
+    }
 }
