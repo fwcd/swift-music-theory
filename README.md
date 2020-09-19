@@ -1,6 +1,8 @@
 # Music Theory Library for Swift
 A minimal library for Western music theory in pure Swift, defining notes, scales, chords, intervals, progressions and more.
 
+Since no external dependencies are needed, it runs on Linux, macOS and any other platform supporting Swift 5.2+.
+
 ## Examples
 ```swift
 // Creating (octaved) notes
