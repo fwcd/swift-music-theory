@@ -1,7 +1,7 @@
 /// A note without an octave. In contrast to a
 /// (theoretical) pitch class, it does, however,
 /// specify an enharmonic spelling.
-public struct NoteClass: Codable, Hashable {
+public struct NoteClass: Codable, Hashable, CustomStringConvertible {
     /// The twelve note classes with their (most common)
     /// enharmonic spellings.
     public static let twelveToneOctave: [[NoteClass]] = [
@@ -29,6 +29,8 @@ public struct NoteClass: Codable, Hashable {
         }
         return st
     }
+
+    public var description: String { "\(letter)\(accidental.map { "\($0)" } ?? "")" }
 
     public init(_ letter: NoteLetter, _ accidental: NoteAccidental? = nil) {
         self.letter = letter

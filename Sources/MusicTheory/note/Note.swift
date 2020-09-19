@@ -1,7 +1,7 @@
 /// A note is a named pitch or, viewed differently,
 /// a note class with an octave in scientific pitch
 /// notation.
-public struct Note: Codable, Hashable {
+public struct Note: Codable, Hashable, CustomStringConvertible {
     public var noteClass: NoteClass
     public var octave: Int
 
@@ -12,6 +12,8 @@ public struct Note: Codable, Hashable {
     public var semitone: Int { noteClass.semitone }
     /// A "global semitone" that identifies the note's pitch uniquely on the keyboard
     public var numValue: Int { (octave * NoteClass.twelveToneOctave.count) + noteClass.semitone }
+
+    public var description: String { "\(noteClass)\(octave)" }
 
     private init(noteClass: NoteClass, octave: Int) {
         self.noteClass = noteClass
