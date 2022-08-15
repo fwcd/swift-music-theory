@@ -8,6 +8,7 @@ A minimal library for Western music theory in pure Swift, defining notes, scales
 Since no external dependencies are needed, it runs on Linux, macOS and any other platform supporting Swift 5.6+.
 
 ## Examples
+
 ```swift
 // Creating (octaved) notes
 Note(.c, 3)             // -> C3
