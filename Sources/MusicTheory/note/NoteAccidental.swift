@@ -9,6 +9,11 @@ public struct NoteAccidental: CustomStringConvertible, Codable, Hashable {
     public static let sharp = Self(semitones: 1)
     public static let DoubleSharp = Self(semitones: 2)
 
+    /// This accidental sharpened by one semitone.
+    public var sharp: Self { Self(semitones: semitones + 1) }
+    /// This accidental flattened by one semitone.
+    public var flat: Self { Self(semitones: semitones - 1) }
+
     public var description: String {
         if semitones >= 0 {
             return String(repeating: "#", count: semitones)

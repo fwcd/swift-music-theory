@@ -2,25 +2,38 @@
 /// (theoretical) pitch class, it does, however,
 /// specify an enharmonic spelling.
 public struct NoteClass: Codable, Hashable, CustomStringConvertible {
+    public static let c = Self(letter: .c)
+    public static let d = Self(letter: .d)
+    public static let e = Self(letter: .e)
+    public static let f = Self(letter: .f)
+    public static let g = Self(letter: .g)
+    public static let a = Self(letter: .a)
+    public static let b = Self(letter: .b)
+
     /// The twelve note classes with their (most common)
     /// enharmonic spellings.
     public static let twelveToneOctave: [[NoteClass]] = [
-        [Self(.c), Self(.b, .sharp)],
-        [Self(.c, .sharp), Self(.d, .flat)],
-        [Self(.d)],
-        [Self(.d, .sharp), Self(.e, .flat)],
-        [Self(.e), Self(.f, .flat)],
-        [Self(.f), Self(.e, .sharp)],
-        [Self(.f, .sharp), Self(.g, .flat)],
-        [Self(.g)],
-        [Self(.g, .sharp), Self(.a, .flat)],
-        [Self(.a)],
-        [Self(.a, .sharp), Self(.b, .flat)],
-        [Self(.b), Self(.c, .flat)]
+        [.c, .b.sharp],
+        [.c.sharp, .d.flat],
+        [.d],
+        [.d.sharp, .e.flat],
+        [.e, .f.flat],
+        [.f, .e.sharp],
+        [.f.sharp, .g.flat],
+        [.g],
+        [.g.sharp, .a.flat],
+        [.a],
+        [.a.sharp, .b.flat],
+        [.b, .c.flat]
     ]
 
     public var letter: NoteLetter
     public var accidental: NoteAccidental
+
+    /// This note class sharpened by one semitone.
+    public var sharp: Self { Self(letter: letter, accidental: accidental.sharp) }
+    /// This note class flattened by one semitone.
+    public var flat: Self { Self(letter: letter, accidental: accidental.flat) }
 
     /// The semitone within a C major scale.
     public var semitone: Int {
@@ -32,7 +45,7 @@ public struct NoteClass: Codable, Hashable, CustomStringConvertible {
 
     public var description: String { "\(letter)\(accidental)" }
 
-    public init(_ letter: NoteLetter, _ accidental: NoteAccidental = .unaltered) {
+    public init(letter: NoteLetter, accidental: NoteAccidental = .unaltered) {
         self.letter = letter
         self.accidental = accidental
     }
@@ -42,6 +55,6 @@ public struct NoteClass: Codable, Hashable, CustomStringConvertible {
         let equivalents = Self.twelveToneOctave[modSemitone]
         let enharmonic = enharmonicPicker(equivalents)
 
-        self.init(enharmonic.letter, enharmonic.accidental)
+        self.init(letter: enharmonic.letter, accidental: enharmonic.accidental)
     }
 }

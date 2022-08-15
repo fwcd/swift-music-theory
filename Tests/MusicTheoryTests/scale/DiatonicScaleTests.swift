@@ -19,15 +19,15 @@ final class DiatonicScaleTests: XCTestCase {
             Note(.c, 1),
             Note(.d, 1),
             Note(.e, 1),
-            Note(.f, .sharp, 1)
+            Note(.f.sharp, 1)
         ])
-        XCTAssertEqual(DiatonicMajorScale(key: Note(.g, .flat, 0)).notes, [
-            Note(.g, .flat, 0),
-            Note(.a, .flat, 0),
-            Note(.b, .flat, 0),
-            Note(.c, .flat, 0), // TODO: Should this be denoted using octave 1?
-            Note(.d, .flat, 1),
-            Note(.e, .flat, 1),
+        XCTAssertEqual(DiatonicMajorScale(key: Note(.g.flat, 0)).notes, [
+            Note(.g.flat, 0),
+            Note(.a.flat, 0),
+            Note(.b.flat, 0),
+            Note(.c.flat, 0), // TODO: Should this be denoted using octave 1?
+            Note(.d.flat, 1),
+            Note(.e.flat, 1),
             Note(.f, 1)
         ])
     }
@@ -45,10 +45,10 @@ final class DiatonicScaleTests: XCTestCase {
     }
 
     func testRelativeKeys() {
-        assertRelativeKeys(NoteClass(.g), NoteClass(.e))
-        assertRelativeKeys(NoteClass(.d), NoteClass(.b))
-        assertRelativeKeys(NoteClass(.e), NoteClass(.c, .sharp))
-        assertRelativeKeys(NoteClass(.d, .flat), NoteClass(.b, .flat))
+        assertRelativeKeys(.g, .e)
+        assertRelativeKeys(.d, .b)
+        assertRelativeKeys(.e, .c.sharp)
+        assertRelativeKeys(.d.flat, .b.flat)
     }
 
     private func assertRelativeKeys(_ major: NoteClass, _ minor: NoteClass) {

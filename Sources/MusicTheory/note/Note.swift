@@ -20,14 +20,9 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
         self.octave = octave
     }
 
-    public init(_ letter: NoteLetter, _ accidental: NoteAccidental, _ octave: Int) {
-        self.init(noteClass: NoteClass(letter, accidental), octave: octave)
-    }
-
-    public init(_ letter: NoteLetter, _ octave: Int) {
-        // Workaround since optional unlabeled arguments in the middle
-        // confuse Swift's overload resolution.
-        self.init(letter, .unaltered, octave)
+    /// Convenience initializer for brevity.
+    public init(_ noteClass: NoteClass, _ octave: Int) {
+        self.init(noteClass: noteClass, octave: octave)
     }
 
     public init(numValue: Int, enharmonicPicker: ([NoteClass]) -> NoteClass = { $0.first! }) {

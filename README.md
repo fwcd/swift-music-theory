@@ -9,8 +9,8 @@ Since no external dependencies are needed, it runs on Linux, macOS and any other
 ## Examples
 ```swift
 // Creating (octaved) notes
-Note(.c, 3)               // -> C3
-Note(.d, .flat, 2)        // -> Db2
+Note(.c, 3)             // -> C3
+Note(.d.flat, 2)        // -> Db2
 
 // Applying diatonic intervals
 Note(.c, 3) + .majorThird // -> E3
@@ -18,7 +18,7 @@ Note(.d, 2) + .octave     // -> D3
 
 // Applying chromatic intervals
 Note(.f, 2) + .semitone
-Note(.g, .sharp) + .semitones(3)
+Note(.g.sharp, 0) + .semitones(3)
 
 // Creating scales
 DiatonicMajorScale(key: Note(.e, 2)).notes // -> [E2, F#2, G#2, A2, B2, C#3, D#3]

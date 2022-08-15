@@ -13,7 +13,7 @@ final class TriadTests: XCTestCase {
     func testMinorTriad() {
         XCTAssertEqual(MinorTriad(root: Note(.c, 0)).notes, [
             Note(.c, 0),
-            Note(.e, .flat, 0),
+            Note(.e.flat, 0),
             Note(.g, 0)
         ])
     }
