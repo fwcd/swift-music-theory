@@ -1,5 +1,4 @@
-/// A note letter, corresponding to the steps
-/// of a C major scale.
+/// A note letter, corresponding to the steps of a C major scale.
 public enum NoteLetter: String, CaseIterable, CustomStringConvertible, Codable, Hashable {
     case c = "C"
     case d = "D"
@@ -12,12 +11,31 @@ public enum NoteLetter: String, CaseIterable, CustomStringConvertible, Codable, 
     /// The Western notation for this note letter.
     public var description: String { rawValue }
 
+    /// The semitones above c.
+    public var semitone: Int {
+        switch self {
+        case .c: return 0
+        case .d: return 2
+        case .e: return 4
+        case .f: return 5
+        case .g: return 7
+        case .a: return 9
+        case .b: return 11
+        }
+    }
+
     /// Parses a note letter from the given value.
     public init?(_ rawString: String) {
         self.init(rawValue: rawString)
     }
 
-    public func advanced(by n: Int) -> NoteLetter {
-        Self.allCases[(Self.allCases.firstIndex(of: self)! + n).floorMod(Self.allCases.count)]
+    /// Fetches the note letter the given number of (diatonic) steps above this letter.
+    public func advanced(by diatonicSteps: Int) -> Self {
+        Self.allCases[(Self.allCases.firstIndex(of: self)! + diatonicSteps).floorMod(Self.allCases.count)]
+    }
+
+    /// Fetches the note letter the given number of (diatonic) steps above this letter.
+    public static func +(lhs: Self, rhs: Int) -> Self {
+        lhs.advanced(by: rhs)
     }
 }
