@@ -1,15 +1,13 @@
-/// A hexatonic blues scale based on the minor pentatonic scale
-/// plus the out-of-key, b5 'blue note'.
-public struct BluesScale: Scale {
+/// The classic pentatonic minor scale derived from a set of stacked perfect fifths.
+struct MinorPentatonicScale: Scale {
     public let key: Note
-
+    
     public var notes: [Note] { [
         key,
         key + .minorThird,
         key + .perfectFourth,
-        key + .diminishedFifth,
         key + .perfectFifth,
-        key + .minorSeventh
+        key + .minorSeventh,
     ] }
 
     public init(key: Note) {

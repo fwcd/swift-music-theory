@@ -1,9 +1,9 @@
 import XCTest
 @testable import MusicTheory
 
-final class DiatonicScaleTests: XCTestCase {
-    func testDiatonicMajorScale() throws {
-        XCTAssertEqual(DiatonicMajorScale(key: Note(.c, 0)).notes, [
+final class ScaleTests: XCTestCase {
+    func testMajorScale() throws {
+        XCTAssertEqual(MajorScale(key: Note(.c, 0)).notes, [
             Note(.c, 0),
             Note(.d, 0),
             Note(.e, 0),
@@ -12,7 +12,7 @@ final class DiatonicScaleTests: XCTestCase {
             Note(.a, 0),
             Note(.b, 0)
         ])
-        XCTAssertEqual(DiatonicMajorScale(key: Note(.g, 0)).notes, [
+        XCTAssertEqual(MajorScale(key: Note(.g, 0)).notes, [
             Note(.g, 0),
             Note(.a, 0),
             Note(.b, 0),
@@ -21,7 +21,7 @@ final class DiatonicScaleTests: XCTestCase {
             Note(.e, 1),
             Note(.f.sharp, 1)
         ])
-        XCTAssertEqual(DiatonicMajorScale(key: Note(.g.flat, 0)).notes, [
+        XCTAssertEqual(MajorScale(key: Note(.g.flat, 0)).notes, [
             Note(.g.flat, 0),
             Note(.a.flat, 0),
             Note(.b.flat, 0),
@@ -32,8 +32,8 @@ final class DiatonicScaleTests: XCTestCase {
         ])
     }
 
-    func testDiatonicMinorScale() {
-        XCTAssertEqual(DiatonicMinorScale(key: Note(.a, 0)).notes, [
+    func testMinorScale() {
+        XCTAssertEqual(MinorScale(key: Note(.a, 0)).notes, [
             Note(.a, 0),
             Note(.b, 0),
             Note(.c, 1),
@@ -53,8 +53,8 @@ final class DiatonicScaleTests: XCTestCase {
 
     private func assertRelativeKeys(_ major: NoteClass, _ minor: NoteClass) {
         XCTAssertEqual(
-            Set(DiatonicMajorScale(key: Note(noteClass: major, octave: 0)).notes.map(\.noteClass)),
-            Set(DiatonicMinorScale(key: Note(noteClass: minor, octave: 0)).notes.map(\.noteClass)),
+            Set(MajorScale(key: Note(noteClass: major, octave: 0)).notes.map(\.noteClass)),
+            Set(MinorScale(key: Note(noteClass: minor, octave: 0)).notes.map(\.noteClass)),
             "\(major) major is not the relative key to \(minor) minor"
         )
     }
