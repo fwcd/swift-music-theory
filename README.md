@@ -1,6 +1,7 @@
 # Music Theory Library for Swift
 
 [![Build](https://github.com/fwcd/swift-music-theory/actions/workflows/build.yml/badge.svg)](https://github.com/fwcd/swift-music-theory/actions/workflows/build.yml)
+[![Docs](https://github.com/fwcd/swift-music-theory/actions/workflows/docs.yml/badge.svg)](https://fwcd.github.io/swift-music-theory/documentation/musictheory)
 
 A minimal library for Western music theory in pure Swift, defining notes, scales, chords, intervals, progressions and more.
 
