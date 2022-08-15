@@ -20,7 +20,7 @@ public struct NoteClass: Codable, Hashable, CustomStringConvertible {
     ]
 
     public var letter: NoteLetter
-    public var accidental: NoteAccidental?
+    public var accidental: NoteAccidental
 
     /// The semitone within a C major scale.
     public var semitone: Int {
@@ -30,9 +30,9 @@ public struct NoteClass: Codable, Hashable, CustomStringConvertible {
         return st
     }
 
-    public var description: String { "\(letter)\(accidental.map { "\($0)" } ?? "")" }
+    public var description: String { "\(letter)\(accidental)" }
 
-    public init(_ letter: NoteLetter, _ accidental: NoteAccidental? = nil) {
+    public init(_ letter: NoteLetter, _ accidental: NoteAccidental = .unaltered) {
         self.letter = letter
         self.accidental = accidental
     }

@@ -11,8 +11,9 @@ public enum NoteLetter: String, CaseIterable, CustomStringConvertible, Codable, 
 
     public var description: String { rawValue }
 
-    public static func of(_ s: String) -> NoteLetter? {
-        NoteLetter(rawValue: s)
+    /// Parses a note letter from the given value.
+    public init?(_ rawString: String) {
+        self.init(rawValue: rawString)
     }
 
     public func advanced(by n: Int) -> NoteLetter {
