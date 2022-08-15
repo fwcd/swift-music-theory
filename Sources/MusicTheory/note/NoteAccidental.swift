@@ -3,9 +3,11 @@ public struct NoteAccidental: CustomStringConvertible, Codable, Hashable {
     /// The number of semitones the note in altered by. Sharp if > 0, flat if < 0.
     public let semitones: Int
 
+    public static let doubleFlat = Self(semitones: -2)
+    public static let flat = Self(semitones: -1)
     public static let unaltered = Self(semitones: 0)
-    public static let flat = Self(semitones: 1)
-    public static let sharp = Self(semitones: 2)
+    public static let sharp = Self(semitones: 1)
+    public static let DoubleSharp = Self(semitones: 2)
 
     public var description: String {
         if semitones >= 0 {
