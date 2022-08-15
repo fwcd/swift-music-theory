@@ -4,10 +4,10 @@
 		"scope": "swift",
 		"body": [
 			"import XCTest",
-			"@testable import $1",
+			"@testable import MusicTheory",
 			"",
-			"final class $2Tests: XCTestCase {",
-			"\tfunc test$3() throws {",
+			"final class $1Tests: XCTestCase {",
+			"\tfunc test$2() throws {",
 			"\t\t$0",
 			"\t}",
 			"}"
