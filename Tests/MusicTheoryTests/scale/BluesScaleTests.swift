@@ -2,10 +2,6 @@ import XCTest
 @testable import MusicTheory
 
 final class BluesScaleTests: XCTestCase {
-    static var allTests = [
-        ("testBluesScale", testBluesScale)
-    ]
-    
     func testBluesScale() throws {
         XCTAssertEqual(BluesScale(key: Note(.c, 0)).notes, [
             Note(.c, 0),

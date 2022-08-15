@@ -2,12 +2,6 @@ import XCTest
 @testable import MusicTheory
 
 final class DiatonicScaleTests: XCTestCase {
-    static var allTests = [
-        ("testDiatonicMajorScale", testDiatonicMajorScale),
-        ("testDiatonicMinorScale", testDiatonicMinorScale),
-        ("testRelativeKeys", testRelativeKeys)
-    ]
-    
     func testDiatonicMajorScale() throws {
         XCTAssertEqual(DiatonicMajorScale(key: Note(.c, 0)).notes, [
             Note(.c, 0),

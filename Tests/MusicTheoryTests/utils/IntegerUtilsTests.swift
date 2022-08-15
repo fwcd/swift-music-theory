@@ -2,11 +2,6 @@ import XCTest
 @testable import MusicTheory
 
 final class IntegerUtilsTests: XCTestCase {
-    static var allTests = [
-        ("testFloorDiv", testFloorDiv),
-        ("testFloorMod", testFloorMod)
-    ]
-
     func testFloorDiv() {
         XCTAssertEqual(3.floorDiv(3), 1)
         XCTAssertEqual(2.floorDiv(3), 0)

@@ -2,10 +2,6 @@ import XCTest
 @testable import MusicTheory
 
 final class NoteLetterTests: XCTestCase {
-    static var allTests = [
-        ("testNoteLetter", testNoteLetter)
-    ]
-    
     func testNoteLetter() throws {
         XCTAssertEqual(NoteLetter.c.advanced(by: 0), .c)
         XCTAssertEqual(NoteLetter.d.advanced(by: 2), .f)

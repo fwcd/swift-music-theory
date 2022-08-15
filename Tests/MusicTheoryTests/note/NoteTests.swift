@@ -2,12 +2,6 @@ import XCTest
 @testable import MusicTheory
 
 final class NoteTests: XCTestCase {
-    static var allTests = [
-        ("testNote", testNote),
-        ("testDiatonicIntervals", testDiatonicIntervals),
-        ("testChromaticIntervals", testChromaticIntervals)
-    ]
-    
     func testNote() {
         XCTAssertEqual(Note(.c, 0).numValue, 0)
         XCTAssertEqual(Note(.c, 1).numValue, 12)

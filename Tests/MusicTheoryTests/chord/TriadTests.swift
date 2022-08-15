@@ -2,11 +2,6 @@ import XCTest
 @testable import MusicTheory
 
 final class TriadTests: XCTestCase {
-    static var allTests = [
-        ("testMajorTriad", testMajorTriad),
-        ("testMinorTriad", testMinorTriad)
-    ]
-    
     func testMajorTriad() {
         XCTAssertEqual(MajorTriad(root: Note(.c, 0)).notes, [
             Note(.c, 0),
