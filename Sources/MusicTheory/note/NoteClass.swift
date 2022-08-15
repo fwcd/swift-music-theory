@@ -36,12 +36,7 @@ public struct NoteClass: Codable, Hashable, CustomStringConvertible {
     public var flat: Self { Self(letter: letter, accidental: accidental.flat) }
 
     /// The semitone within a C major scale.
-    public var semitone: Int {
-        guard let st = Self.twelveToneOctave.firstIndex(where: { $0.contains(self) }) else {
-            fatalError("Invalid note class: \(self), twelve-tone octave should contain all note classes. This is a bug.")
-        }
-        return st
-    }
+    public var semitone: Int { letter.semitone + accidental.semitones }
 
     /// The Western notation for this note class.
     public var description: String { "\(letter)\(accidental)" }
