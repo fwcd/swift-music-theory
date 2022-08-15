@@ -1,3 +1,4 @@
+/// The classic pentatonic major scale derived from a set of stacked perfect fifths.
 struct PentatonicScale: Scale {
     public let key: Note
     

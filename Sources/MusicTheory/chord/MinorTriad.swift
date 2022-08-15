@@ -1,3 +1,4 @@
+/// A triad chord composed of root, minor third and perfect fifth.
 public struct MinorTriad: Chord {
     public let root: Note
 

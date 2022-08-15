@@ -1,3 +1,4 @@
+/// A chord composed of root and perfect fifth.
 public struct PowerChord: Chord {
     public let root: Note
 

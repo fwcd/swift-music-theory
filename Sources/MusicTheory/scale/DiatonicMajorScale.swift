@@ -1,3 +1,4 @@
+/// The classic heptatonic major scale derived from a set of stacked perfect fifths.
 public struct DiatonicMajorScale: Scale {
     public let key: Note
 

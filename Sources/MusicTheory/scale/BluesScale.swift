@@ -1,3 +1,5 @@
+/// A hexatonic blues scale based on the minor pentatonic scale
+/// plus the out-of-key, b5 'blue note'.
 public struct BluesScale: Scale {
     public let key: Note
 
