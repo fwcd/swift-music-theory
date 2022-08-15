@@ -13,6 +13,7 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
     /// A "global semitone" that identifies the note's pitch uniquely on the keyboard
     public var numValue: Int { (octave * NoteClass.twelveToneOctave.count) + noteClass.semitone }
 
+    /// The Western notation for this note.
     public var description: String { "\(noteClass)\(octave)" }
 
     public init(noteClass: NoteClass, octave: Int) {

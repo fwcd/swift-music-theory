@@ -43,6 +43,7 @@ public struct NoteClass: Codable, Hashable, CustomStringConvertible {
         return st
     }
 
+    /// The Western notation for this note class.
     public var description: String { "\(letter)\(accidental)" }
 
     public init(letter: NoteLetter, accidental: NoteAccidental = .unaltered) {

@@ -14,6 +14,7 @@ public struct NoteAccidental: CustomStringConvertible, Codable, Hashable {
     /// This accidental flattened by one semitone.
     public var flat: Self { Self(semitones: semitones - 1) }
 
+    /// The Western notation for this note accidental.
     public var description: String {
         if semitones >= 0 {
             return String(repeating: "#", count: semitones)

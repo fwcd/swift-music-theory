@@ -9,6 +9,7 @@ public enum NoteLetter: String, CaseIterable, CustomStringConvertible, Codable, 
     case a = "A"
     case b = "B"
 
+    /// The Western notation for this note letter.
     public var description: String { rawValue }
 
     /// Parses a note letter from the given value.
