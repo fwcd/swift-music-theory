@@ -23,9 +23,9 @@ Note(.f, 2) + .semitone
 Note(.g.sharp, 0) + .semitones(3)
 
 // Creating scales
-DiatonicMajorScale(key: Note(.e, 2)).notes // -> [E2, F#2, G#2, A2, B2, C#3, D#3]
-DiatonicMinorScale(key: Note(.c, 1)).notes // -> [C1, D1, Eb1, F1, G1, Ab1, Bb1]
-BluesScale(key: Note(.g, 0)).notes         // -> [G0, Bb0, C1, Db1, D1, F1]
+MajorScale(key: Note(.e, 2)).notes       // -> [E2, F#2, G#2, A2, B2, C#3, D#3]
+MinorScale(key: Note(.c, 1)).notes       // -> [C1, D1, Eb1, F1, G1, Ab1, Bb1]
+MinorBluesScale(key: Note(.g, 0)).notes  // -> [G0, Bb0, C1, Db1, D1, F1]
 ```
 
 To experiment with the library yourself, simply run `swift run --repl` to open an interactive shell and enter
