@@ -5,7 +5,7 @@ public struct MinorTriad: Chord {
     public var notes: [Note] { [
         root,
         root + .minorThird,
-        root + .perfectFifth
+        root + .perfectFifth,
     ] }
 
     public init(root: Note) {

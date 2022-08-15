@@ -4,7 +4,7 @@ public struct PowerChord: Chord {
 
     public var notes: [Note] { [
         root,
-        root + .perfectFifth
+        root + .perfectFifth,
     ] }
 
     public init(root: Note) {
