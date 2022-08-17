@@ -1,10 +1,10 @@
-/// The classic diatonic (heptatonic) natural minor scale derived from a set of stacked perfect fifths.
-public struct MinorScale: Scale {
+/// The third mode (Phrygian). The minor scale with a flattened second.
+public struct PhrygianScale: Scale {
     public let key: Note
 
     public var notes: [Note] { [
         key,
-        key + .majorSecond,
+        key + .minorSecond,
         key + .minorThird,
         key + .perfectFourth,
         key + .perfectFifth,
@@ -16,5 +16,3 @@ public struct MinorScale: Scale {
         self.key = key
     }
 }
-
-public typealias AeolianScale = MinorScale

@@ -1,13 +1,13 @@
-/// The classic diatonic (heptatonic) natural minor scale derived from a set of stacked perfect fifths.
-public struct MinorScale: Scale {
+/// The seventh mode (Locrian).
+public struct LocrianScale: Scale {
     public let key: Note
 
     public var notes: [Note] { [
         key,
-        key + .majorSecond,
+        key + .minorSecond,
         key + .minorThird,
         key + .perfectFourth,
-        key + .perfectFifth,
+        key + .diminishedFifth,
         key + .minorSixth,
         key + .minorSeventh,
     ] }
@@ -16,5 +16,3 @@ public struct MinorScale: Scale {
         self.key = key
     }
 }
-
-public typealias AeolianScale = MinorScale

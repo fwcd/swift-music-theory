@@ -1,12 +1,12 @@
-/// The classic diatonic (heptatonic) major scale derived from a set of stacked perfect fifths.
-public struct MajorScale: Scale {
+/// The fourth mode (Lydian). The major scale with a sharpened fourth.
+public struct LydianScale: Scale {
     public let key: Note
 
     public var notes: [Note] { [
         key,
         key + .majorSecond,
         key + .majorThird,
-        key + .perfectFourth,
+        key + .augmentedFourth,
         key + .perfectFifth,
         key + .majorSixth,
         key + .majorSeventh,
@@ -16,5 +16,3 @@ public struct MajorScale: Scale {
         self.key = key
     }
 }
-
-public typealias IonianScale = MajorScale

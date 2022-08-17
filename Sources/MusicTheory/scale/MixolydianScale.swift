@@ -1,5 +1,5 @@
-/// The classic diatonic (heptatonic) major scale derived from a set of stacked perfect fifths.
-public struct MajorScale: Scale {
+/// The fifth mode (Mixolydian). The major scale with a flattened seventh.
+public struct MixolydianScale: Scale {
     public let key: Note
 
     public var notes: [Note] { [
@@ -9,12 +9,10 @@ public struct MajorScale: Scale {
         key + .perfectFourth,
         key + .perfectFifth,
         key + .majorSixth,
-        key + .majorSeventh,
+        key + .minorSeventh,
     ] }
 
     public init(key: Note) {
         self.key = key
     }
 }
-
-public typealias IonianScale = MajorScale

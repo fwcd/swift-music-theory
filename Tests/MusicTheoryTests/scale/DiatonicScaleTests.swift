@@ -1,8 +1,8 @@
 import XCTest
 @testable import MusicTheory
 
-final class ScaleTests: XCTestCase {
-    func testMajorScale() throws {
+final class DiatonicScaleTests: XCTestCase {
+    func testMajorScale() {
         XCTAssertEqual(MajorScale(key: Note(.c, 0)).notes, [
             Note(.c, 0),
             Note(.d, 0),
@@ -10,7 +10,7 @@ final class ScaleTests: XCTestCase {
             Note(.f, 0),
             Note(.g, 0),
             Note(.a, 0),
-            Note(.b, 0)
+            Note(.b, 0),
         ])
         XCTAssertEqual(MajorScale(key: Note(.g, 0)).notes, [
             Note(.g, 0),
@@ -19,7 +19,7 @@ final class ScaleTests: XCTestCase {
             Note(.c, 1),
             Note(.d, 1),
             Note(.e, 1),
-            Note(.f.sharp, 1)
+            Note(.f.sharp, 1),
         ])
         XCTAssertEqual(MajorScale(key: Note(.g.flat, 0)).notes, [
             Note(.g.flat, 0),
@@ -28,7 +28,7 @@ final class ScaleTests: XCTestCase {
             Note(.c.flat, 0), // TODO: Should this be denoted using octave 1?
             Note(.d.flat, 1),
             Note(.e.flat, 1),
-            Note(.f, 1)
+            Note(.f, 1),
         ])
     }
 
@@ -40,7 +40,7 @@ final class ScaleTests: XCTestCase {
             Note(.d, 1),
             Note(.e, 1),
             Note(.f, 1),
-            Note(.g, 1)
+            Note(.g, 1),
         ])
     }
 

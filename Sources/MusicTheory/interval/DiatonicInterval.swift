@@ -10,6 +10,7 @@ public struct DiatonicInterval: Hashable, Codable {
     public static let minorThird = Self(degrees: 2, semitones: 3)
     public static let majorThird = Self(degrees: 2, semitones: 4)
     public static let perfectFourth = Self(degrees: 3, semitones: 5)
+    public static let augmentedFourth = Self(degrees: 3, semitones: 6)
     public static let diminishedFifth = Self(degrees: 4, semitones: 6)
     public static let perfectFifth = Self(degrees: 4, semitones: 7)
     public static let minorSixth = Self(degrees: 5, semitones: 8)
