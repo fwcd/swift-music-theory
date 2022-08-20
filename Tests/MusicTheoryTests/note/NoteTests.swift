@@ -8,6 +8,12 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(Note(.d, 0).semitone, 2)
         XCTAssertEqual(Note(.d.sharp, 0).semitone, 3)
         XCTAssertEqual(Note(.e.sharp, 4).semitone, Note(.f, 4).semitone)
+
+        XCTAssertEqual(Note(semitone: 0), Note(.c, 0))
+        XCTAssertEqual(Note(semitone: 1), Note(.c.sharp, 0))
+        XCTAssertEqual(Note(semitone: 2), Note(.d, 0))
+        XCTAssertEqual(Note(semitone: 14), Note(.d, 1))
+        XCTAssertEqual(Note(semitone: 57), Note(.a, 4))
     }
 
     func testDiatonicIntervals() {
