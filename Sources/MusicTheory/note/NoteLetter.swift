@@ -11,6 +11,19 @@ public enum NoteLetter: String, CaseIterable, CustomStringConvertible, Codable, 
     /// The Western notation for this note letter.
     public var description: String { rawValue }
 
+    /// The diatonic step of the letter.
+    public var degree: Int {
+        switch self {
+        case .c: return 0
+        case .d: return 1
+        case .e: return 2
+        case .f: return 3
+        case .g: return 4
+        case .a: return 5
+        case .b: return 6
+        }
+    }
+
     /// The semitones above c.
     public var semitone: Int {
         switch self {
