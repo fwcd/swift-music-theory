@@ -57,6 +57,9 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
     }
 
     public init(semitone: Int, enharmonicPicker: ([NoteClass]) -> NoteClass = { $0.first! }) {
+        // TODO: Rewrite this initializer (along with the equivalent one in NoteClass)
+        //       to use .enharmonicEquivalent or similar instead of this picker function
+        //       which relies on a number of handpicked equivalents.
         let count = NoteClass.twelveToneOctave.count
         self.init(
             noteClass: NoteClass(semitone: semitone.floorMod(count), enharmonicPicker: enharmonicPicker),
