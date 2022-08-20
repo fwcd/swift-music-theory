@@ -19,7 +19,7 @@ public struct NoteAccidental: CustomStringConvertible, Codable, Hashable {
         if semitones >= 0 {
             return String(repeating: "#", count: semitones)
         } else {
-            return String(repeating: "b", count: semitones)
+            return String(repeating: "b", count: -semitones)
         }
     }
 
