@@ -43,7 +43,7 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
             // Handle edge case where the flattened value can be further rewritten to an unaltered letter
             if note.accidental == .flat {
                 let equivalent = note.enharmonicEquivalent(diatonicSteps: -1)
-                if equivalent.accidental == .unaltered {
+                if equivalent.accidental.isUnaltered {
                     return equivalent
                 }
             }

@@ -9,12 +9,16 @@ public struct NoteAccidental: CustomStringConvertible, Codable, Hashable, Stride
     public static let sharp = Self(semitones: 1)
     public static let doubleSharp = Self(semitones: 2)
 
+    /// The unaltered accidental.
     public static var zero = unaltered
 
     /// This accidental sharpened by one semitone.
     public var sharp: Self { Self(semitones: semitones + 1) }
     /// This accidental flattened by one semitone.
     public var flat: Self { Self(semitones: semitones - 1) }
+
+    /// Whether the accidental is unaltered/zero.
+    public var isUnaltered: Bool { semitones == 0 }
 
     /// The Western notation for this note accidental.
     public var description: String {
