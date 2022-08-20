@@ -16,7 +16,7 @@ public struct NoteClass: Codable, Hashable, CustomStringConvertible {
         .d.flat,
         .d,
         .e.flat,
-        .f.flat,
+        .e,
         .f,
         .g.flat,
         .g,
