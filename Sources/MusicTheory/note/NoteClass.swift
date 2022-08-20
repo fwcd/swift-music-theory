@@ -10,21 +10,20 @@ public struct NoteClass: Codable, Hashable, CustomStringConvertible {
     public static let a = Self(letter: .a)
     public static let b = Self(letter: .b)
 
-    /// The twelve note classes with their (most common)
-    /// enharmonic spellings.
-    public static let twelveToneOctave: [[NoteClass]] = [
-        [.c, .b.sharp],
-        [.c.sharp, .d.flat],
-        [.d],
-        [.d.sharp, .e.flat],
-        [.e, .f.flat],
-        [.f, .e.sharp],
-        [.f.sharp, .g.flat],
-        [.g],
-        [.g.sharp, .a.flat],
-        [.a],
-        [.a.sharp, .b.flat],
-        [.b, .c.flat]
+    /// The twelve note classes with their canonical spellings.
+    public static let twelveToneOctave: [NoteClass] = [
+        .c,
+        .d.flat,
+        .d,
+        .e.flat,
+        .f.flat,
+        .f,
+        .g.flat,
+        .g,
+        .a.flat,
+        .a,
+        .b.flat,
+        .b,
     ]
 
     public var letter: NoteLetter
@@ -46,11 +45,8 @@ public struct NoteClass: Codable, Hashable, CustomStringConvertible {
         self.accidental = accidental
     }
 
-    public init(semitone: Int, enharmonicPicker: ([NoteClass]) -> NoteClass = { $0.first! }) {
+    public init(semitone: Int) {
         let modSemitone = semitone.floorMod(Self.twelveToneOctave.count)
-        let equivalents = Self.twelveToneOctave[modSemitone]
-        let enharmonic = enharmonicPicker(equivalents)
-
-        self.init(letter: enharmonic.letter, accidental: enharmonic.accidental)
+        self = Self.twelveToneOctave[modSemitone]
     }
 }
