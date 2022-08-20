@@ -2,12 +2,12 @@ import XCTest
 @testable import MusicTheory
 
 final class NoteTests: XCTestCase {
-    func testNote() {
-        XCTAssertEqual(Note(.c, 0).numValue, 0)
-        XCTAssertEqual(Note(.c, 1).numValue, 12)
-        XCTAssertEqual(Note(.d, 0).numValue, 2)
-        XCTAssertEqual(Note(.d.sharp, 0).numValue, 3)
-        XCTAssertEqual(Note(.e.sharp, 4).numValue, Note(.f, 4).numValue)
+    func testSemitone() {
+        XCTAssertEqual(Note(.c, 0).semitone, 0)
+        XCTAssertEqual(Note(.c, 1).semitone, 12)
+        XCTAssertEqual(Note(.d, 0).semitone, 2)
+        XCTAssertEqual(Note(.d.sharp, 0).semitone, 3)
+        XCTAssertEqual(Note(.e.sharp, 4).semitone, Note(.f, 4).semitone)
     }
 
     func testDiatonicIntervals() {
