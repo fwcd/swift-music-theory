@@ -7,7 +7,7 @@ public struct NoteAccidental: CustomStringConvertible, Codable, Hashable, Stride
     public static let flat = Self(semitones: -1)
     public static let unaltered = Self(semitones: 0)
     public static let sharp = Self(semitones: 1)
-    public static let DoubleSharp = Self(semitones: 2)
+    public static let doubleSharp = Self(semitones: 2)
 
     public static var zero = unaltered
 
