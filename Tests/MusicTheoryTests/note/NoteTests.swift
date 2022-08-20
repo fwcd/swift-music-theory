@@ -20,7 +20,7 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(Note(.c, 3).canonicalized, Note(.c, 3))
         XCTAssertEqual(Note(.d, 0).canonicalized, Note(.d, 0))
         XCTAssertEqual(Note(.c.flat, -1).canonicalized, Note(.b, -2))
-        XCTAssertEqual(Note(.a.sharp.sharp, -1).canonicalized, Note(.b, -2))
+        XCTAssertEqual(Note(.a.sharp.sharp, -2).canonicalized, Note(.b, -2))
         // TODO: Add more test cases
     }
 

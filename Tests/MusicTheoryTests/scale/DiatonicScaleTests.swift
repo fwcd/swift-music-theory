@@ -25,7 +25,7 @@ final class DiatonicScaleTests: XCTestCase {
             Note(.g.flat, 0),
             Note(.a.flat, 0),
             Note(.b.flat, 0),
-            Note(.c.flat, 0), // TODO: Should this be denoted using octave 1?
+            Note(.c.flat, 1),
             Note(.d.flat, 1),
             Note(.e.flat, 1),
             Note(.f, 1),

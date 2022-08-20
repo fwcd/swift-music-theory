@@ -28,7 +28,7 @@ final class EqualTemperamentTests: XCTestCase {
         }
 
         for note in notes {
-            XCTAssertEqual(note, tuning.closestNote(for: tuning.pitchHz(for: note)))
+            XCTAssertEqual(note.canonicalized, tuning.closestNote(for: tuning.pitchHz(for: note)).canonicalized)
         }
     }
 }
