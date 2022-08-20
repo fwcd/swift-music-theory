@@ -1,7 +1,7 @@
 /// An accidental raises or lowers a note by a number of semitones.
-public struct NoteAccidental: CustomStringConvertible, Codable, Hashable {
+public struct NoteAccidental: CustomStringConvertible, Codable, Hashable, Strideable {
     /// The number of semitones the note in altered by. Sharp if > 0, flat if < 0.
-    public let semitones: Int
+    public var semitones: Int
 
     public static let doubleFlat = Self(semitones: -2)
     public static let flat = Self(semitones: -1)
@@ -43,6 +43,22 @@ public struct NoteAccidental: CustomStringConvertible, Codable, Hashable {
         } else {
             semitones = 0
         }
+    }
+
+    public func advanced(by n: Int) -> Self {
+        self + n
+    }
+
+    public func distance(to other: Self) -> Int {
+        other.semitones - semitones
+    }
+
+    public static func +(lhs: Self, rhs: Int) -> Self {
+        Self(semitones: lhs.semitones + rhs)
+    }
+
+    public static func +=(lhs: inout Self, rhs: Int) {
+        lhs.semitones += rhs
     }
 }
 
