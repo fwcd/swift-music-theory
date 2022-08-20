@@ -1,9 +1,5 @@
 import Foundation
 
-private let twelfthRootOf2 = pow(2.0, 1.0 / 12.0)
-private let twelfthRootOf2ToThePowerOf57 = pow(twelfthRootOf2, 57)
-private let logTwelfthRootOf2 = log(twelfthRootOf2)
-
 /// The standard, twelve-tone equal temperament tuning.
 public struct EqualTemperament: Tuning {
     public let a4PitchHz: Double
@@ -17,19 +13,24 @@ public struct EqualTemperament: Tuning {
     //
     //   b = 12th root of 2
     //   c = a4PitchHz / (12th root of 2)^57
-
-    private var constant: Double { a4PitchHz / twelfthRootOf2ToThePowerOf57 }
+    //
+    // Simplifying gets us
+    // 
+    //   f(n) = c * b^n
+    //        = a4PitchHz * (1 / (12th root of 2)^57) * 2^(n / 12)
+    //        = a4PitchHz * 2^(-57 / 12) * 2^(n / 12)
+    //        = a4PitchHz * 2^((n - 57) / 12)
 
     public init(a4PitchHz: Double = 440) {
         self.a4PitchHz = a4PitchHz
     }
 
     public func pitchHz(for note: Note) -> Double {
-        constant * pow(twelfthRootOf2, Double(note.semitone))
+        a4PitchHz * pow(2, Double(note.semitone - 57) / 12.0)
     }
 
     public func semitone(for pitchHz: Double) -> Double {
         assert(pitchHz > 0)
-        return log(pitchHz / constant) / logTwelfthRootOf2
+        return 12.0 * log2(pitchHz / a4PitchHz) + 57
     }
 }
