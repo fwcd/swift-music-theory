@@ -1,3 +1,5 @@
+private let midiSemitoneOffset: Int = 12
+
 /// A note is a named pitch or, viewed differently,
 /// a note class with an octave in scientific pitch
 /// notation.
@@ -20,6 +22,9 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
     public var semitone: Int { (octave * NoteClass.twelveToneOctave.count) + noteClass.semitone }
     /// The absolute (octave-dependent) semitone that identifies the note letter's pitch uniquely on the keyboard
     public var letterSemitone: Int { (octave * NoteClass.twelveToneOctave.count) + letter.semitone }
+
+    /// The MIDI note number.
+    public var midiNumber: Int { semitone + midiSemitoneOffset }
 
     /// The Western notation for this note.
     public var description: String { "\(noteClass)\(octave)" }
@@ -65,6 +70,10 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
             noteClass: NoteClass(semitone: semitone.floorMod(count), enharmonicPicker: enharmonicPicker),
             octave: semitone.floorDiv(count)
         )
+    }
+
+    public init(midiNumber: Int, enharmonicPicker: ([NoteClass]) -> NoteClass = { $0.first! }) {
+        self.init(semitone: midiNumber - midiSemitoneOffset, enharmonicPicker: enharmonicPicker)
     }
 
     /// Fetches the enharmonic equivalent with the specified number of diatonic steps above this note.

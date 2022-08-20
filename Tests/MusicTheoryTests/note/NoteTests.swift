@@ -16,6 +16,16 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(Note(semitone: 57), Note(.a, 4))
     }
 
+    func testMidiNumber() {
+        XCTAssertEqual(Note(.f, 9).midiNumber, 125)
+        XCTAssertEqual(Note(.d.sharp, 9).midiNumber, 123)
+        XCTAssertEqual(Note(.e.flat, 9).midiNumber, 123)
+        XCTAssertEqual(Note(.a, 8).midiNumber, 117)
+
+        XCTAssertEqual(Note(midiNumber: 115), Note(.g, 8))
+        XCTAssertEqual(Note(midiNumber: 113), Note(.f, 8))
+    }
+
     func testCanonicalization() {
         XCTAssertEqual(Note(.c, 3).canonicalized, Note(.c, 3))
         XCTAssertEqual(Note(.d, 0).canonicalized, Note(.d, 0))
