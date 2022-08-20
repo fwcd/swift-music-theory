@@ -16,6 +16,14 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(Note(semitone: 57), Note(.a, 4))
     }
 
+    func testCanonicalization() {
+        XCTAssertEqual(Note(.c, 3).canonicalized, Note(.c, 3))
+        XCTAssertEqual(Note(.d, 0).canonicalized, Note(.d, 0))
+        XCTAssertEqual(Note(.c.flat, -1).canonicalized, Note(.b, -2))
+        XCTAssertEqual(Note(.a.sharp.sharp, -1).canonicalized, Note(.b, -2))
+        // TODO: Add more test cases
+    }
+
     func testDiatonicIntervals() {
         XCTAssertEqual(Note(.c, 0) + .octave, Note(.c, 1))
         XCTAssertEqual(Note(.c, 1) + .minorSecond, Note(.d.flat, 1))

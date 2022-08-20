@@ -5,14 +5,46 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
     public var noteClass: NoteClass
     public var octave: Int
 
-    public var letter: NoteLetter { noteClass.letter }
-    public var accidental: NoteAccidental? { noteClass.accidental }
+    /// The note's letter, taken from the note class.
+    public var letter: NoteLetter {
+        get { noteClass.letter }
+        set { noteClass.letter = newValue }
+    }
+    /// The note's accidental, taken from the note class.
+    public var accidental: NoteAccidental {
+        get { noteClass.accidental }
+        set { noteClass.accidental = newValue }
+    }
 
-    /// A "global semitone" that identifies the note's pitch uniquely on the keyboard
+    /// The absolute (octave-dependent) semitone that identifies the note's pitch uniquely on the keyboard
     public var semitone: Int { (octave * NoteClass.twelveToneOctave.count) + noteClass.semitone }
+    /// The absolute (octave-dependent) semitone that identifies the note letter's pitch uniquely on the keyboard
+    public var letterSemitone: Int { (octave * NoteClass.twelveToneOctave.count) + letter.semitone }
 
     /// The Western notation for this note.
     public var description: String { "\(noteClass)\(octave)" }
+
+    /// The canonical enharmonic equivalent of this note, which uses either zero or one flat.
+    public var canonicalized: Self {
+        let step = accidental.semitones.signum()
+        if step == 0 {
+            return self
+        } else {
+            var note = self
+            // TODO: Make this more efficient than linear time in the accidental
+            while !(.flat...(.unaltered)).contains(note.accidental) {
+                note = note.enharmonicEquivalent(diatonicSteps: step)
+            }
+            // Handle edge case where the flattened value can be further rewritten to an unaltered letter
+            if note.accidental == .flat {
+                let equivalent = note.enharmonicEquivalent(diatonicSteps: -1)
+                if equivalent.accidental == .unaltered {
+                    return equivalent
+                }
+            }
+            return note
+        }
+    }
 
     public init(noteClass: NoteClass, octave: Int) {
         self.noteClass = noteClass
@@ -32,16 +64,40 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
         )
     }
 
+    /// Fetches the enharmonic equivalent with the specified number of diatonic steps above this note.
+    public func enharmonicEquivalent(diatonicSteps: Int) -> Self {
+        // First compute the note with diatonicSteps letters above this one
+        var newNote = Note(
+            noteClass: NoteClass(letter: letter + diatonicSteps, accidental: accidental),
+            octave: octave + (letter.degree + diatonicSteps).floorDiv(NoteLetter.allCases.count)
+        )
+
+        // Now we compute how many semitones we moved and subtract them from this accidental
+        let semitoneDiff = letterSemitone - newNote.letterSemitone
+        newNote.accidental = newNote.accidental + semitoneDiff
+
+        return newNote
+    }
+
     public func advanced(by n: Int) -> Note {
         Note(semitone: semitone + n)
     }
 
-    public static func +(note: Note, interval: DiatonicInterval) -> Note {
-        let newLetter = note.letter.advanced(by: interval.degrees)
-        return Note(semitone: note.semitone + interval.semitones, enharmonicPicker: { $0.first { $0.letter == newLetter } ?? $0.first! })
+    public static func +(note: Self, interval: DiatonicInterval) -> Self {
+        var newNote = note
+        newNote.accidental += interval.semitones
+        return newNote.enharmonicEquivalent(diatonicSteps: interval.degrees)
     }
 
-    public static func +(note: Note, interval: ChromaticInterval) -> Note {
+    public static func +(note: Self, interval: ChromaticInterval) -> Self {
         note.advanced(by: interval.semitones)
+    }
+
+    public static func +=(note: inout Self, interval: DiatonicInterval) {
+        note = note + interval
+    }
+
+    public static func +=(note: inout Self, interval: ChromaticInterval) {
+        note = note + interval
     }
 }
