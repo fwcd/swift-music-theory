@@ -20,6 +20,8 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
 
     /// The absolute (octave-dependent) semitone that identifies the note's pitch uniquely on the keyboard
     public var semitone: Int { (octave * NoteClass.twelveToneOctave.count) + noteClass.semitone }
+    /// The absolute (octave-dependent) diatonic step of the note letter.
+    public var letterDegree: Int { (octave * NoteLetter.allCases.count) + letter.degree }
     /// The absolute (octave-dependent) semitone that identifies the note letter's pitch uniquely on the keyboard
     public var letterSemitone: Int { (octave * NoteClass.twelveToneOctave.count) + letter.semitone }
 
