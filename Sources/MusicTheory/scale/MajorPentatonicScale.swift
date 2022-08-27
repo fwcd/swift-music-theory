@@ -1,5 +1,5 @@
 /// The classic pentatonic major scale derived from a set of stacked perfect fifths.
-struct MajorPentatonicScale: Scale {
+public struct MajorPentatonicScale: Scale {
     public let key: Note
     
     public var notes: [Note] { [
