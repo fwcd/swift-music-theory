@@ -34,11 +34,11 @@ public struct DiatonicInterval: Hashable, Codable {
     public static let majorFourteenth = Self(degrees: 13, semitones: 23)
     public static let doubleOctave = Self(degrees: 14, semitones: 24)
 
-    prefix static func -(operand: Self) -> Self {
+    public prefix static func -(operand: Self) -> Self {
         return Self(degrees: -operand.degrees, semitones: -operand.semitones)
     }
 
-    static func octaves(_ count: Int) -> Self {
+    public static func octaves(_ count: Int) -> Self {
         return Self(degrees: 7 * count, semitones: 12 * count)
     }
 }

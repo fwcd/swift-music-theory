@@ -38,6 +38,8 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(Note(.c, 0) + .octave, Note(.c, 1))
         XCTAssertEqual(Note(.c, 1) + .minorSecond, Note(.d.flat, 1))
         XCTAssertEqual(Note(.c, 1) + .majorSecond, Note(.d, 1))
+        XCTAssertEqual(Note(.c, 1) - .majorSecond, Note(.b.flat, 0))
+        XCTAssertEqual(Note(.c, 1) - .minorSecond, Note(.b, 0))
     }
 
     func testChromaticIntervals() {

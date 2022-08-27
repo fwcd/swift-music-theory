@@ -111,4 +111,20 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
     public static func +=(note: inout Self, interval: ChromaticInterval) {
         note = note + interval
     }
+
+    public static func -(note: Self, interval: DiatonicInterval) -> Self {
+        note + (-interval)
+    }
+
+    public static func -(note: Self, interval: ChromaticInterval) -> Self {
+        note + (-interval)
+    }
+
+    public static func -=(note: inout Self, interval: DiatonicInterval) {
+        note += (-interval)
+    }
+
+    public static func -=(note: inout Self, interval: ChromaticInterval) {
+        note += (-interval)
+    }
 }
