@@ -29,4 +29,30 @@ final class NoteClassTests: XCTestCase {
             XCTAssertEqual(noteClass.semitone, semitone, line: line)
         }
     }
+
+    func testDiatonicIntervals() {
+        XCTAssertEqual(.c + .octave, .c)
+        XCTAssertEqual(.c + .minorSecond, .d.flat)
+        XCTAssertEqual(.c + .majorSecond, .d)
+        XCTAssertEqual(.c - .majorSecond, .b.flat)
+        XCTAssertEqual(.c - .minorSecond, .b)
+
+        XCTAssertEqual(.c + .majorSecond, .d)
+		XCTAssertEqual(.c - .minorSecond, .b)
+		XCTAssertEqual(.c - .majorSecond, .b.flat)
+		XCTAssertEqual(.c + .octaves(2), .c)
+		XCTAssertEqual(.c + .octaves(-1), .c)
+		XCTAssertEqual(.c - .octaves(3), .c)
+		XCTAssertEqual(.f.sharp - .majorSeventh, .g)
+		XCTAssertEqual(.d + .minorThird, .f)
+		XCTAssertEqual(.d + .majorThird, .f.sharp)
+		XCTAssertEqual(.a.sharp + .unison, .a.sharp)
+		XCTAssertEqual(.g.flat + .octave, .g.flat)
+
+        var aSharp = NoteClass.a.sharp
+        aSharp -= .majorThird
+        XCTAssertEqual(aSharp, .f.sharp)
+        aSharp += .majorThird
+        XCTAssertEqual(aSharp, .a.sharp)
+    }
 }

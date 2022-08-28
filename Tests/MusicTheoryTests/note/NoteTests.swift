@@ -52,6 +52,12 @@ final class NoteTests: XCTestCase {
 		XCTAssertEqual(Note(.d, 3) + .majorThird, Note(.f.sharp, 3))
 		XCTAssertEqual(Note(.a.sharp, 2) + .unison, Note(.a.sharp, 2))
 		XCTAssertEqual(Note(.g.flat, 1) + .octave, Note(.g.flat, 2))
+
+        var aSharp = Note(.a.sharp, 3)
+        aSharp -= .majorThird
+        XCTAssertEqual(aSharp, Note(.f.sharp, 3))
+        aSharp += .majorThird
+        XCTAssertEqual(aSharp, Note(.a.sharp, 3))
     }
 
     func testChromaticIntervals() {
