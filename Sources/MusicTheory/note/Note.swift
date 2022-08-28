@@ -90,10 +90,6 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
         return newNote
     }
 
-    public func advanced(by n: Int) -> Note {
-        Note(semitone: semitone + n)
-    }
-
     public static func +(note: Self, interval: DiatonicInterval) -> Self {
         var newNote = note
         newNote.accidental += interval.semitones
@@ -101,7 +97,7 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
     }
 
     public static func +(note: Self, interval: ChromaticInterval) -> Self {
-        note.advanced(by: interval.semitones)
+        Note(semitone: note.semitone + interval.semitones)
     }
 
     public static func +=(note: inout Self, interval: DiatonicInterval) {
