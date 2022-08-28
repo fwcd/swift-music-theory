@@ -40,6 +40,18 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(Note(.c, 1) + .majorSecond, Note(.d, 1))
         XCTAssertEqual(Note(.c, 1) - .majorSecond, Note(.b.flat, 0))
         XCTAssertEqual(Note(.c, 1) - .minorSecond, Note(.b, 0))
+
+        XCTAssertEqual(Note(.c, 4) + .majorSecond, Note(.d, 4))
+		XCTAssertEqual(Note(.c, 4) - .minorSecond, Note(.b, 3))
+		XCTAssertEqual(Note(.c, 4) - .majorSecond, Note(.b.flat, 3))
+		XCTAssertEqual(Note(.c, 4) + .octaves(2), Note(.c, 6))
+		XCTAssertEqual(Note(.c, 4) + .octaves(-1), Note(.c, 3))
+		XCTAssertEqual(Note(.c, 4) - .octaves(3), Note(.c, 1))
+		XCTAssertEqual(Note(.f.sharp, 7) - .majorSeventh, Note(.g, 6))
+		XCTAssertEqual(Note(.d, 3) + .minorThird, Note(.f, 3))
+		XCTAssertEqual(Note(.d, 3) + .majorThird, Note(.f.sharp, 3))
+		XCTAssertEqual(Note(.a.sharp, 2) + .unison, Note(.a.sharp, 2))
+		XCTAssertEqual(Note(.g.flat, 1) + .octave, Note(.g.flat, 2))
     }
 
     func testChromaticIntervals() {
