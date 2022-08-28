@@ -15,4 +15,17 @@ final class NoteAccidentalTests: XCTestCase {
         XCTAssertEqual(NoteAccidental(semitones: -1) - .init(semitones: 1), .doubleFlat)
         XCTAssertEqual(NoteAccidental.unaltered, .zero)
     }
+
+    func testFormatting() {
+        XCTAssertEqual(NoteAccidental.flat.description, "b")
+        XCTAssertEqual(NoteAccidental.sharp.description, "#")
+        XCTAssertEqual(NoteAccidental.doubleSharp.description, "##")
+        XCTAssertEqual(NoteAccidental.flat.flat.flat.description, "bbb")
+    }
+
+    func testParsing() {
+        XCTAssertEqual(NoteAccidental("##"), .doubleSharp)
+        XCTAssertEqual(NoteAccidental("b"), .flat)
+        XCTAssertEqual(NoteAccidental("bb"), .doubleFlat)
+    }
 }

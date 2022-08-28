@@ -41,7 +41,7 @@ public struct NoteAccidental: CustomStringConvertible, Codable, Hashable, Stride
             let factor: Int
             switch symbol {
             case "#": factor = 1
-            case "b": factor = 1
+            case "b": factor = -1
             default: return nil
             }
 
