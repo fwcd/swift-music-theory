@@ -128,3 +128,46 @@ public struct Note: Codable, Hashable, CustomStringConvertible {
         note += (-interval)
     }
 }
+
+extension NoteClass {
+    private var asNote: Note {
+        Note(noteClass: self, octave: 0)
+    }
+
+    /// Fetches the enharmonic equivalent with the specified number of diatonic steps above this note.
+    public func enharmonicEquivalent(diatonicSteps: Int) -> Self {
+        asNote.enharmonicEquivalent(diatonicSteps: diatonicSteps).noteClass
+    }
+
+    public static func +(noteClass: Self, interval: DiatonicInterval) -> Self {
+        (noteClass.asNote + interval).noteClass
+    }
+
+    public static func +(noteClass: Self, interval: ChromaticInterval) -> Self {
+        (noteClass.asNote + interval).noteClass
+    }
+
+    public static func +=(noteClass: inout Self, interval: DiatonicInterval) {
+        noteClass = noteClass + interval
+    }
+
+    public static func +=(noteClass: inout Self, interval: ChromaticInterval) {
+        noteClass = noteClass + interval
+    }
+
+    public static func -(note: Self, interval: DiatonicInterval) -> Self {
+        note + (-interval)
+    }
+
+    public static func -(note: Self, interval: ChromaticInterval) -> Self {
+        note + (-interval)
+    }
+
+    public static func -=(note: inout Self, interval: DiatonicInterval) {
+        note += (-interval)
+    }
+
+    public static func -=(note: inout Self, interval: ChromaticInterval) {
+        note += (-interval)
+    }
+}
