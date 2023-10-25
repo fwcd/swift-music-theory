@@ -5,7 +5,7 @@
 
 A minimal library for Western music theory in pure Swift, defining notes, scales, chords, intervals, progressions and more.
 
-Since no external dependencies are needed, it runs on Linux, macOS and any other platform supporting Swift 5.6+, including the browser with [SwiftWasm](https://github.com/swiftwasm).
+Since no external dependencies are needed, it runs on Linux, macOS and any other platform supporting Swift 5.7+, including the browser with [SwiftWasm](https://github.com/swiftwasm).
 
 ## Examples
 
