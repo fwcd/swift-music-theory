@@ -1,7 +1,7 @@
 /// A note without an octave. In contrast to a
 /// (theoretical) pitch class, it does, however,
 /// specify an enharmonic spelling.
-public struct NoteClass: Codable, Hashable, CustomStringConvertible {
+public struct NoteClass: Codable, Hashable, Sendable, CustomStringConvertible {
     public static let c = Self(letter: .c)
     public static let d = Self(letter: .d)
     public static let e = Self(letter: .e)

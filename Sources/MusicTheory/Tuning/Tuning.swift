@@ -1,4 +1,4 @@
-public protocol Tuning {
+public protocol Tuning: Sendable {
     /// Fetches the pitch for the given note.
     /// 
     /// - Parameter note: The note

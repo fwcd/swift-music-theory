@@ -1,5 +1,5 @@
 /// A note letter, corresponding to the steps of a C major scale.
-public enum NoteLetter: String, CaseIterable, CustomStringConvertible, Codable, Hashable {
+public enum NoteLetter: String, CaseIterable, CustomStringConvertible, Codable, Hashable, Sendable {
     case c = "C"
     case d = "D"
     case e = "E"

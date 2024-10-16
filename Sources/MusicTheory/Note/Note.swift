@@ -3,7 +3,7 @@ private let midiSemitoneOffset: Int = 12
 /// A note is a named pitch or, viewed differently,
 /// a note class with an octave in scientific pitch
 /// notation.
-public struct Note: Codable, Hashable, CustomStringConvertible {
+public struct Note: Codable, Hashable, Sendable, CustomStringConvertible {
     public var noteClass: NoteClass
     public var octave: Int
 

@@ -1,5 +1,5 @@
 /// An interval on the diatonic scale.
-public struct DiatonicInterval: Hashable, Codable {
+public struct DiatonicInterval: Hashable, Sendable, Codable {
     /// The total number of diatonic steps in this interval.
     public let degrees: Int
     /// The total number of semitones in this interval.

@@ -1,5 +1,5 @@
 /// An accidental raises or lowers a note by a number of semitones.
-public struct NoteAccidental: CustomStringConvertible, Codable, Hashable, Strideable, AdditiveArithmetic {
+public struct NoteAccidental: CustomStringConvertible, Codable, Hashable, Sendable, Strideable, AdditiveArithmetic {
     /// The number of semitones the note in altered by. Sharp if > 0, flat if < 0.
     public var semitones: Int
 

@@ -1,5 +1,5 @@
 /// An interval on the chromatic scale.
-public struct ChromaticInterval: Hashable, Codable, AdditiveArithmetic {
+public struct ChromaticInterval: Hashable, Sendable, Codable, AdditiveArithmetic {
     /// The empty chromatic interval.
     public static let zero = Self(semitones: 0)
 
