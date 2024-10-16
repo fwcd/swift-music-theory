@@ -10,7 +10,7 @@ public struct NoteAccidental: CustomStringConvertible, Codable, Hashable, Sendab
     public static let doubleSharp = Self(semitones: 2)
 
     /// The unaltered accidental.
-    public static var zero = unaltered
+    public static let zero = unaltered
 
     /// This accidental sharpened by one semitone.
     public var sharp: Self { Self(semitones: semitones + 1) }
